@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snack Compatibility Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://c8.alamy.com/comp/2C3T73F/hand-drawn-seamless-pattern-with-fast-food-elements-burger-pizza-sandwich-hamburger-snack-doodle-sketch-style-fast-food-element-for-background-menu-wallpaper-design-vector-illustration-2C3T73F.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+    
+
+    .container {
+      background: white;
+      padding: 3rem; /* Increased padding */
+      border-radius: 16px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px; /* Increased width */
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #f5576c;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.9rem; /* Increased padding for input */
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1.1rem;
+    }
+
+    button {
+      background-color: #f5576c;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #f093fb;
+    }
+
+    .result {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #f5576c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Snack Compatibility Checker</h1>
+    <label for="item1">Enter First Snack</label>
+    <input type="text" id="item1" placeholder="e.g., Chips">
+    
+    <label for="item2">Enter Second Snack</label>
+    <input type="text" id="item2" placeholder="e.g., Guacamole">
+    
+    <button onclick="checkCompatibility()">Check Compatibility</button>
+    
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function checkCompatibility() {
+      const item1 = document.getElementById('item1').value;
+      const item2 = document.getElementById('item2').value;
+
+      if (!item1 || !item2) {
+        document.getElementById('result').innerText = "Please enter both items!";
+        return;
+      }
+
+      const compatibility = Math.floor(Math.random() * 100) + 1;
+      let message;
+
+      if (compatibility <= 20) {
+        message = "Uh-oh! Not a great match. Maybe keep these separate!";
+      } else if (compatibility <= 40) {
+        message = "Hmm… questionable combo. Approach with caution!";
+      } else if (compatibility <= 60) {
+        message = "Could go either way! Might surprise you, might not.";
+      } else if (compatibility <= 80) {
+        message = "Solid potential! Could be worth a try!";
+      } else {
+        message = "Snack soulmates! This combo is a winner!";
+      }
+
+      document.getElementById('result').innerText = 
+        `Compatibility of ${item1} and ${item2} is ${compatibility}%! ${message}`;
+    }
+  </script>
+</body>
+</html>
